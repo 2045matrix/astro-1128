@@ -1,8 +1,8 @@
 ---
 import { pathHasLocale } from "astro:i18n";
 import '../styles/global.css'
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = 'about me'
 
 const identity={
@@ -24,8 +24,10 @@ const textCase = "uppercase";
 const fontWeight = "bold";
 
 ---
+
+<BaseLayout {pageTitle}>
 <meta charset="utf-8"/>
-<title> {pageTitle}</title>
+
 <style define:vars={{skillColor}}>
     h1{
         color:purple;
@@ -41,8 +43,7 @@ const fontWeight = "bold";
 </style>
 
 
-<Header/>
-<h1>about me</h1>
+
 <p>me</p>
 <ul>
     <li> name{identity.firstName}</li>
@@ -63,7 +64,6 @@ const fontWeight = "bold";
     {finished && <p>finished</p> }
     { goal ===3 ? <p>3 </p>: <p>not 3</p> }
 
-    <Footer/>
-    <script>
-      import "../scripts/menu.js";
-      </script>
+
+   
+   </BaseLayout>
