@@ -1,0 +1,69 @@
+---
+import { pathHasLocale } from "astro:i18n";
+import '../styles/global.css'
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+const pageTitle = 'about me'
+
+const identity={
+    firstName: "莎拉",
+  country: "加拿大",
+  occupation: "技术撰稿人",
+  hobbies: ["摄影", "观鸟", "棒球"],
+  age:55
+}
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy =true
+const finished = false
+const goal =33
+const skillColor = "red"
+
+const textCase = "uppercase";
+const fontWeight = "bold";
+
+---
+<meta charset="utf-8"/>
+<title> {pageTitle}</title>
+<style define:vars={{skillColor}}>
+    h1{
+        color:purple;
+        font-size: 4rem;
+    }
+    .skill{
+        /* color:chartreuse; */
+        color: var(--skillColor);
+        text-transform: var(--textCase);
+        font-weight: var(--fontWeight);
+     
+    }
+</style>
+
+
+<Header/>
+<h1>about me</h1>
+<p>me</p>
+<ul>
+    <li> name{identity.firstName}</li>
+    <li>age{identity.age} </li>
+{
+    identity.hobbies.length > 2 &&
+    <li> hobbies{identity.hobbies[1]}  </li>
+}
+
+</ul>
+<h2>skills</h2>
+<ul>
+    { skills.map((i)=><ul class="skill" >{i} </ul> ) }
+</ul>
+  
+
+    {happy && <p>hayyp</p> }
+    {finished && <p>finished</p> }
+    { goal ===3 ? <p>3 </p>: <p>not 3</p> }
+
+    <Footer/>
+    <script>
+      import "../scripts/menu.js";
+      </script>
